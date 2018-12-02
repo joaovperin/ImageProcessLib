@@ -66,6 +66,13 @@ public class ImageInfo implements ImageInfoConstants {
         return type.cast(info.get(key));
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        info.forEach((k, v) -> sb.append(k).append("=").append(v).append('\n'));
+        return sb.toString();
+    }
+
     public static final ImageInfo create() {
         return new ImageInfo();
     }

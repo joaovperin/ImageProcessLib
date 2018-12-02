@@ -17,7 +17,6 @@
 package br.jpe.ipl.core.scripts.pixel;
 
 import br.jpe.ipl.core.ImageColor;
-import java.awt.Color;
 import br.jpe.ipl.core.scripts.PixelScript;
 
 /**

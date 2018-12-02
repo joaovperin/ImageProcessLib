@@ -60,7 +60,7 @@ public class SingleColorProcessScript extends DesaturationProcessScript implemen
         }
     }
 
-    private final int getValue(Color color) {
+    private int getValue(Color color) {
         if (channel == CHANNEL_RED) {
             return color.getRed();
         }

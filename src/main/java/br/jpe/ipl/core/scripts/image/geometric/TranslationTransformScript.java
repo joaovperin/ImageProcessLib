@@ -42,9 +42,9 @@ public class TranslationTransformScript extends GeometricTransformScript {
     @Override
     public double[][] getTransformMatrix(double[][][] mtz, int i, int j) {
         return new double[][] {
-            new double[] { 1, 0, 0 },
-            new double[] { 0, 1, 0 },
-            new double[] { xDelta, yDelta, 1 }
+            new double[] { 1, 0, -xDelta },
+            new double[] { 0, 1, -yDelta },
+            new double[] { 0, 0, 1 }
         };
     }
 

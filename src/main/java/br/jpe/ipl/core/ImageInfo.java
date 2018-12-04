@@ -32,11 +32,12 @@ public class ImageInfo implements ImageInfoConstants {
         this.info = new HashMap<>();
     }
 
-    public void put(String key, Object value) {
+    public ImageInfo put(String key, Object value) {
         if (info.containsKey(key)) {
             throw new ImageInformationAlreadyExistsException(key);
         }
         info.put(key, value);
+        return this;
     }
 
     public int getInt(String key) {

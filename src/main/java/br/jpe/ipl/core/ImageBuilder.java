@@ -17,7 +17,9 @@
 package br.jpe.ipl.core;
 
 import br.jpe.ipl.core.scripts.ImageScript;
+import br.jpe.ipl.core.scripts.MaskPixelScript;
 import br.jpe.ipl.core.scripts.PixelScript;
+import br.jpe.ipl.core.scripts.image.BinaryLabelingScript;
 
 /**
  * A helper class to build images by applying filters
@@ -34,6 +36,10 @@ public class ImageBuilder {
 
     public Image build() {
         return new Image(matrix);
+    }
+
+    public Image build(BinaryLabelingScript binaryLabeler) {
+        return this.applyScript(binaryLabeler).build();
     }
 
     public ImageBuilder applyScript(int t, PixelScript... scripts) {
@@ -54,6 +60,16 @@ public class ImageBuilder {
     public ImageBuilder applyScript(ImageScript... scripts) {
         ImageProcessor.process(matrix, scripts);
         return this;
+    }
+
+    public ImageBuilder transform(MaskPixelScript... scripts) {
+        ImageProcessor.process(matrix, scripts);
+        return this;
+    }
+
+    public Image getMask(MaskPixelScript... scripts) {
+        ImageProcessor.process(matrix, scripts);
+        return new Image(matrix);
     }
 
     public static ImageBuilder create(double[][][] source) {

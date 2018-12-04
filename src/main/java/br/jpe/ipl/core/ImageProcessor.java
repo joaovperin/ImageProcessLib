@@ -17,6 +17,7 @@
 package br.jpe.ipl.core;
 
 import br.jpe.ipl.core.scripts.ImageScript;
+import br.jpe.ipl.core.scripts.MaskPixelScript;
 import br.jpe.ipl.core.scripts.PixelScript;
 
 /**
@@ -54,6 +55,30 @@ public class ImageProcessor {
                     ImageColor color = ImageColor.fromArray(src[i][j]);
                     for (PixelScript p : pixelScripts) {
                         p.run(src, color, i, j);
+                    }
+                }
+            }
+        }
+    }
+
+    public static final void process(double[][][] src, MaskPixelScript... scripts) {
+        process(src, DEF_TIMES, scripts);
+    }
+
+    public static final void process(double[][][] src, int t, MaskPixelScript... scripts) {
+        int iLen = src.length;
+        int jLen = src[0].length;
+        int cLen = src[0][0].length;
+
+        while (t-- > 0) {
+            for (int i = 0; i < iLen; i++) {
+                for (int j = 0; j < jLen; j++) {
+                    ImageColor color = ImageColor.fromArray(src[i][j]);
+                    for (MaskPixelScript p : scripts) {
+                        double value = p.run(color.getRed(), color.getGreen(), color.getBlue());
+                        for (int c = 0; c < cLen; c++) {
+                            src[i][j][c] = value;
+                        }
                     }
                 }
             }

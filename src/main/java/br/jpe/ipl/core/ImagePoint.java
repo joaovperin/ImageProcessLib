@@ -21,7 +21,7 @@ package br.jpe.ipl.core;
  *
  * @author joaovperin
  */
-public class ImagePoint {
+public class ImagePoint implements Comparable {
 
     public final int x;
     public final int y;
@@ -98,6 +98,19 @@ public class ImagePoint {
     @Override
     public String toString() {
         return "ImagePoint{" + "x=" + x + ", y=" + y + '}';
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        if (o != null && o instanceof ImagePoint) {
+            ImagePoint other = (ImagePoint) o;
+            if (x != other.x) {
+                return Integer.compare(x, other.x);
+            } else {
+                return Integer.compare(y, other.y);
+            }
+        }
+        return 0;
     }
 
 }

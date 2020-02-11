@@ -43,7 +43,7 @@ public class ImageWriter {
             throw new IOException("Couldn't create file ".concat(filename));
         }
 
-        BufferedImage image = inputImg.toBufferedImage(outputfile);
+        BufferedImage image = inputImg.toBufferedImage();
         ImageIO.write(image, getExtension(outputfile), outputfile);
     }
 

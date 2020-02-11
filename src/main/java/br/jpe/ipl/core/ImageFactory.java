@@ -40,7 +40,7 @@ public class ImageFactory {
         this.read = read;
     }
 
-    public Image empty(int width, int height) {
+    public static Image empty(int width, int height) {
         return new Image(new double[width][height][DEFAULT_NUM_CHANNELS]);
     }
 

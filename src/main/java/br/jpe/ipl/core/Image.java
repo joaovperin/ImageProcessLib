@@ -18,7 +18,6 @@ package br.jpe.ipl.core;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
 /**
@@ -56,7 +55,7 @@ public class Image {
         return bands;
     }
 
-    public BufferedImage toBufferedImage(File outputfile) throws IOException {
+    public BufferedImage toBufferedImage() throws IOException {
         BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {

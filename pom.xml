@@ -43,12 +43,12 @@
     <pluginRepositories></pluginRepositories>
     
     <!-- Distribution settings -->
-    <distributionManagement>
-        <repository> 
-            <id>bintray-joaovperin-ImageProcessLib</id> 
-            <name>joaovperin-ImageProcessLib</name> 
-            <url>https://api.bintray.com/maven/${bintray.subject}/${bintray.repo}/${bintray.package}/;publish=1</url>
-        </repository> 
+    <distributionManagement>        
+        <repository>
+            <id>github-img-process-lib</id>
+            <name>Image processing lib</name>
+            <url>https://maven.pkg.github.com/joaovperin/ImageProcessLib</url>
+        </repository>
     </distributionManagement>
     
 </project>

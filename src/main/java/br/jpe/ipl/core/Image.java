@@ -16,6 +16,11 @@
  */
 package br.jpe.ipl.core;
 
+import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
 /**
  * An image bean
  *
@@ -49,6 +54,21 @@ public class Image {
 
     public int getBands() {
         return bands;
+    }
+
+    public BufferedImage toBufferedImage(File outputfile) throws IOException {
+        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                Color c = new Color(rgbToPixel(mtz[i][j][0]), rgbToPixel(mtz[i][j][1]), rgbToPixel(mtz[i][j][2]));
+                image.setRGB(i, j, c.getRGB());
+            }
+        }
+        return image;
+    }
+
+    private static float rgbToPixel(double rgb) {
+        return ((float) rgb / 255);
     }
 
 }

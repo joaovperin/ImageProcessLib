@@ -16,7 +16,6 @@
  */
 package br.jpe.ipl.core;
 
-import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -44,25 +43,8 @@ public class ImageWriter {
             throw new IOException("Couldn't create file ".concat(filename));
         }
 
-        BufferedImage image = new BufferedImage(inputImg.getWidth(), inputImg.getHeight(), BufferedImage.TYPE_INT_RGB);
-
-        int iLen = inputImg.getWidth();
-        int jLen = inputImg.getHeight();
-
-        double[][][] mtz = inputImg.getMatrix();
-
-        for (int i = 0; i < iLen; i++) {
-            for (int j = 0; j < jLen; j++) {
-                Color c = new Color(toPixel(mtz[i][j][0]), toPixel(mtz[i][j][1]), toPixel(mtz[i][j][2]));
-                image.setRGB(i, j, c.getRGB());
-            }
-        }
-
+        BufferedImage image = inputImg.toBufferedImage(outputfile);
         ImageIO.write(image, getExtension(outputfile), outputfile);
-    }
-
-    private static float toPixel(double rgb) {
-        return ((float) rgb / 255);
     }
 
     private static String getExtension(File file) {

@@ -22,7 +22,7 @@ import java.util.Optional;
 import java.util.Queue;
 
 /**
- * A helper class with utilities for images and matrixes
+ * A helper class with utilities for images and matrices
  *
  * @author joaovperin
  */
